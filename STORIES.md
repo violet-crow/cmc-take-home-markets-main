@@ -74,7 +74,6 @@ Acceptance criteria
 4. Where the authorization-granting body and the body publishing guidance are different, the data does not collapse them into a combined label such as “European Commission/EMA.” The v1 data identifies the authority used for category selection and retains a reference to the supporting rule source.
 5. For each license being assessed, the applicable `RuleSource` or ruleset used to determine eligible categories is explicitly identifiable. Its applicability to the license, proposed change, and assessment date is established rather than inferred solely from the authority name, regional grouping, or category code.
 6. If the applicable authority, source, or its applicability cannot be verified, the license remains unresolved until Regulatory Affairs or the designated domain owner confirms it.
-6. If the responsible authority or applicable rule basis is unclear, the license remains unresolved until Regulatory Affairs or the designated domain owner confirms it.
 
 
 User 4: Use an authority-specific category set
