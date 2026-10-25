@@ -1,0 +1,20 @@
+jurisdiction_code,jurisdiction_name,agency,region,category_count
+US-FDA,United States (FDA: CDER/CBER),U.S. Food and Drug Administration (Center for Drug Evaluation and Research / Center for Biologics Evaluation and Research),North America,6
+EU,European Union (centralised & mutual-recognition/decentralised/national),European Medicines Agency (EMA) / European Commission; CMDh + national competent authorities for non-centralised procedures,Europe (EU/EEA),8
+UK-MHRA,"United Kingdom (Great Britain and, from 1 Jan 2025, Northern Ireland): Medicines and Healthcare products Regulatory Agency",Medicines and Healthcare products Regulatory Agency (MHRA),Europe (non-EU / post-Brexit),5
+JP-PMDA,Japan,"Ministry of Health, Labour and Welfare (MHLW) with scientific review by the Pharmaceuticals and Medical Devices Agency (PMDA)",East Asia,5
+KR-MFDS,South Korea,Ministry of Food and Drug Safety (MFDS),Asia-Pacific,3
+CN-NMPA,China (People's Republic of China),National Medical Products Administration (NMPA); CDE for technical review,Asia-Pacific,3
+CA-HealthCanada,Canada,Health Canada (Therapeutic Products Directorate / BGTD),North America,4
+ASEAN,ASEAN (Association of Southeast Asian Nations): ACTD / ASEAN Variation Guideline (AVG) post-approval change framework,"ASEAN Consultative Committee for Standards and Quality – Pharmaceutical Product Working Group (ACCSQ-PPWG), issuing the harmonised AVG; implemented by national Drug Regulatory Authorities: HSA (Singapore), NPRA (Malaysia), Thai FDA/TFDA (Thailand), BPOM/NADFC (Indonesia), FDA Philippines (CDRR), and DAV/MoH (Vietnam)",Southeast Asia,3
+LATAM,"Latin America cluster (Brazil, Mexico, Argentina)","ANVISA (Agência Nacional de Vigilância Sanitária, Brazil); COFEPRIS (Comisión Federal para la Protección contra Riesgos Sanitarios, Mexico); ANMAT (Administración Nacional de Medicamentos, Alimentos y Tecnología Médica, Argentina)",Latin America (LATAM),15
+CH-Swissmedic,Switzerland,Swissmedic (Swiss Agency for Therapeutic Products),Europe (non-EU / EFTA),6
+AU-TGA,Australia,"Therapeutic Goods Administration (TGA), Department of Health, Disability and Ageing",Asia-Pacific / Oceania,8
+IN-CDSCO,India,"Central Drugs Standard Control Organisation (CDSCO) / Drugs Controller General (India) (DCGI), acting as the Central Licensing Authority (CLA) under the Ministry of Health & Family Welfare",Asia (South Asia),7
+TW-TFDA,Taiwan,"Taiwan Food and Drug Administration (TFDA), Ministry of Health and Welfare (衛生福利部食品藥物管理署)",Asia-Pacific,7
+SA-SFDA,Saudi Arabia (Saudi Food and Drug Authority),"Saudi Food and Drug Authority (SFDA): Drug Sector, Executive Directorate of Regulatory Affairs",Middle East / Gulf Cooperation Council (GCC),5
+NG-NAFDAC,Nigeria,National Agency for Food and Drug Administration and Control (NAFDAC): Registration & Regulatory Affairs (R&R) Directorate,Africa (West Africa / ECOWAS),9
+WHO-PQ,WHO Prequalification,World Health Organization: Prequalification Unit (PQT),Global,4
+CO-INVIMA,Colombia,"INVIMA: Instituto Nacional de Vigilancia de Medicamentos y Alimentos (regulator), operating under the Ministerio de Salud y Protección Social (MSPS), which issues the reglamentación. Pharmacological/safety-efficacy evaluation is the exclusive function of INVIMA's Sala Especializada de Medicamentos y Productos Biológicos de la Comisión Revisora.",Latin America: Andean Community; PAHO/PANDRH member (WHO climatic zone IVb).,6
+ZA-SAHPRA,South Africa,South African Health Products Regulatory Authority (SAHPRA),Sub-Saharan Africa,9
+TR-TITCK,Türkiye (Turkey),Türkiye İlaç ve Tıbbi Cihaz Kurumu (TITCK: Turkish Medicines and Medical Devices Agency),"Europe (EMEA): non-EU, EU-aligned candidate country",7
