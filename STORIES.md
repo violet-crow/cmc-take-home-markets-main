@@ -6,8 +6,10 @@ First, a CMC (Chemistry, Manufacturing, and Controls) technical lead creates a c
 2. Determining the market 
 Next, the GRA (Global Regulatory Affairs) Lead looks up the company's license register to find every active marketing authorization (License) held by the changed products across the sale markets (`Market`). In Europe, this involves checking whether a product holds a centralized EU/EEA authorization (all 27 EU member states plus EEA states Norway, Iceland, and Liechtenstein) or separate national authorizations (granted in individual states like Germany or France). They may have to distinguish the `Market` from an internal list with different groupings.
 
-3. Authority & rulebook lookup
-For each affected License, a Regional Regulatory Specialist identifies the governing regulatory agency (`Authority`) for that market. Examples include the US FDA, the European Commission/EMA for an EU centralized License, BfArM for a German national License, HSA for Singapore, or ANVISA for Brazil. Each Authority has its own rules about what type of changes require what type of process/notification, which the Specialist must consult.
+3. Authority & rule-source lookup
+For each affected `License`, a Regional Regulatory Specialist identifies the governing regulatory `Authority` and the applicable regulatory source/ruleset (`RuleSource`) used to determine the reporting categories available for that classification. The source must be appropriate to the license's market, authorization type, proposed change, and assessment date.
+
+The body that grants an authorization and the body that publishes scientific or regulatory guidance may have different roles. These must be represented distinctly rather than combined into a label. The applicable source, its version or effective dates where available, and its verification status must be identifiable. If the authority, source, or applicability of the rules cannot be verified, the case remains unresolved.
 
 4. Record a category
 The specialist must evaluate the proposed change against the authority's rules and record the applicable variation category (`ReportingCategory`) as an `ImpactClassification`. Examples include PAS in the US, IA_IN or IB in the EU, MAV-1 in Singapore, or BR-SYN-MAJ in Brazil. The v1 model relies on a decision made by the specialist, and does not automatically infer a category from the change description.
@@ -18,12 +20,15 @@ The GRA Lead reviews the assessment across every affected product and its active
 
 Scope & Terminology
 These stories specify the in-scope data needed to represent licensing coverage and record a classification. The terms below should be used consistently across data.
-`Product` and `Change`: These are existing concepts in the worked example. An assessment includes only the products linked to the change.
-`Market`: The legal territory in which an authorization applies. A territory can be national or span multiple countries. This is distinct from a country, region, or internal grouping like LATAM or ASEAN.
-`License`: A specific marketing authorization associated with a product and its authorized market or territory. Separate national authorizations which might also exist are separate records.
-`Authority`: The regulatory body used to determine the applicable classification rules for a license. The body that grants an authorization and the one that publishes scientific guidance are distinct.
-`ReportingCategory`: A category defined under the rules applicable to an authority and license. A code may have different meaning under different authorities.
-`ImpactClassification`: The category recorded for one Change x Product x License combination.
+`Change` (via example): The proposed manufacturing or testing modification, e.g. a supplier change.
+`Product` (via example): The pharmaceutical product affected by the change, e.g. Product A.
+`DosageForm` (via example): The form in which the product is administered.
+`Market`: The legal territory in which an authorization applies. A territory can be national or span multiple countries, e.g. UK. This is distinct from a country, region, or internal grouping like LATAM or ASEAN.
+`License`: A specific marketing authorization for a product in a defined territory.
+`Authority`: The regulatory authority governing the classification rules, e.g. MHRA.
+`RuleSource`: A regulation, guideline, or other reference used to establish the reporting categories applicable for a classification. It identifies the source material and, if possible, its version or effective period and verification status.
+`ReportingCategory`: A category specific to an authority and source that the specialist may select (e.g. UK IB).
+`ImpactClassification`: The selected category for one change/product/license combination.
 
 
 There are a few places where things can easily go wrong.
@@ -31,7 +36,7 @@ There are a few places where things can easily go wrong.
 
 2. Not differentiating between research groupings and licensing authorities. Internal reference spreadsheets group rules under regional buckets like LATAM or ASEAN. However, there is no "ASEAN" or "LATAM" License; every ASEAN marketing authorization is granted by one of the 11 national authorities. As a result, managers routinely assign generic ASEAN codes (MaV, MiV-PA, MiV-N) to markets like Singapore (which has its own HSA categories) and Indonesia and Vietnam (which enforce national statutory schemes), or incorrectly handle Cambodia, Laos, Myanmar, and Timor-Leste, where primary sources are unverified.
 
-3. Treating similar codes as interchangeable. The UK (MHRA), Switzerland (Swissmedic), Saudi Arabia (SFDA), and South Africa (SAHPRA) all reuse EU numbering (IA, IB, II). Specialists may assume identical behavior, missing small variations such as the UK not adopting the EU's 2024/1701 variation reform or that a Type IB in South Africa requires prior approval rather than the EU's 30-day notify-then-wait procedure.
+3. Treating similar codes as interchangeable. The UK (MHRA), Switzerland (Swissmedic), Saudi Arabia (SFDA), and South Africa (SAHPRA) all reuse EU numbering (IA, IB, II). Specialists may assume identical behavior, missing small variations (e.g. a Type IB in South Africa requires prior approval rather than the EU's IB which has a 30-day notify-then-wait procedure).
 
 4. Lack of validation. Spreadsheets with free-text entry and which don't have validation allow specialists to type a category code that does not belong to the License's governing authority (e.g. entering the FDA's CBE-30 code on a Mexican COFEPRIS License) or they may leave an affected product's License blank.
 
@@ -67,7 +72,9 @@ Acceptance criteria
 2. An internal research grouping (for example, ASEAN or LATAM) cannot be used as a substitute for a specific authority or applicable rule basis.
 3. The authority is not inferred from a category code alone.
 4. Where the authorization-granting body and the body publishing guidance are different, the data does not collapse them into a combined label such as “European Commission/EMA.” The v1 data identifies the authority used for category selection and retains a reference to the supporting rule source.
-5. If the responsible authority or applicable rule basis is unclear, the license remains unresolved until Regulatory Affairs or the designated domain owner confirms it.
+5. For each license being assessed, the applicable `RuleSource` or ruleset used to determine eligible categories is explicitly identifiable. Its applicability to the license, proposed change, and assessment date is established rather than inferred solely from the authority name, regional grouping, or category code.
+6. If the applicable authority, source, or its applicability cannot be verified, the license remains unresolved until Regulatory Affairs or the designated domain owner confirms it.
+6. If the responsible authority or applicable rule basis is unclear, the license remains unresolved until Regulatory Affairs or the designated domain owner confirms it.
 
 
 User 4: Use an authority-specific category set
@@ -77,7 +84,7 @@ Acceptance criteria
 1. Each `ReportingCategory` is associated with the authority under which it applies and includes a code and a human-readable description.
 2. A category's source reference is recorded. If the source defines an effective period or version, that information is recorded so the applicable category set can be distinguished from an obsolete one.
 3. The same code under two different authorities is treated as two distinct authority-specific categories unless the source evidence establishes that they are fully the same category.
-4. The available category set is limited to categories supported by the rule source applicable to the license and assessment date. A category from one authority can't be selected for a license governed by another authority.
+4. The available category set is limited to categories supported by the `RuleSource` or ruleset applicable to the license, proposed change, and assessment date. A category from an inapplicable source or unrelated authority cannot be selected, even if its code matches a valid category elsewhere.
 5. Only categories supported by verified or authority-confirmed source material are available. If the primary source has not been verified, the category is not an option; the case remains unresolved and visible for follow-up.
 
 
@@ -106,10 +113,10 @@ Acceptance criteria
 
 This story ends at classification review. Hand-off mechanics, submission planning, filing preparation, regulator decisions, and implementation tracking are out of scope.
 
-Specification and Story relationship
-User 1: `Change` --> find affected `Product` records, associated DosageForm context
-User 2: `Product` --> find active `License` records, `License` --> find applicable Markets
-User 3, User 4: `License` --> find Authority and ruleset
-User 4, User 5: `ReportingCategory`
-User 5, User 6: `ImpactClassification`
-User 2, User 6: Determine completeness from expected `Product` / `License` combinations
+Specification and Story Relationship
+User 1: `Change` --> affected `Product` records. `Product` --> associated `DosageForm` context
+User 2: `Product` --> active `License` records; `License` --> applicable `Market`. Verify that license coverage is complete.
+User 3: `License` --> governing `Authority`; identify `RuleSource` for the license, proposed change, and assessment date.
+User 4: `Authority` and applicable `RuleSource` --> eligible `ReportingCategory` records. Each category identifies its defining authority and supporting source.
+User 5: `ImpactClassification` --> one `Change`, one affected `Product`, one applicable `License`, and one selected `ReportingCategory`; enforce valid relationships and category applicability.
+User 6: `ImpactClassification` records, together with verified license coverage, determine whether every required Product / License combination has been classified.
